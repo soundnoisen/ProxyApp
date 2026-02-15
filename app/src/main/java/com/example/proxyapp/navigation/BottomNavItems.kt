@@ -16,8 +16,8 @@ data class BottomNavItem(
 
 object BottomNavItems {
     val items = listOf(
-        BottomNavItem(BottomNavRoutes.SETUP, R.drawable.ic_launcher_foreground, "Setup"),
-        BottomNavItem(BottomNavRoutes.LIST, R.drawable.ic_launcher_foreground, "List"),
-        BottomNavItem(BottomNavRoutes.SETTINGS, R.drawable.ic_launcher_foreground, "Settings"),
+        BottomNavItem(BottomNavRoutes.SETUP, R.drawable.ic_proxy_setup, "Setup"),
+        BottomNavItem(BottomNavRoutes.LIST, R.drawable.ic_proxy_list, "List"),
+        BottomNavItem(BottomNavRoutes.SETTINGS, R.drawable.ic_proxy_settings, "Settings"),
     )
 }
