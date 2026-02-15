@@ -15,7 +15,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -24,14 +23,10 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 @Composable
 fun BottomNavigationBar(navController: NavHostController) {
     NavigationBar(
-        containerColor = MaterialTheme.colorScheme.primaryContainer,
+        containerColor = MaterialTheme.colorScheme.surface,
         modifier = Modifier
             .height(80.dp)
-            .shadow(
-                elevation = 16.dp,
-                shape = RectangleShape,
-                clip = false
-            )
+            .shadow(30.dp)
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
@@ -53,14 +48,14 @@ fun BottomNavigationBar(navController: NavHostController) {
                     },
                     icon = {
                         Icon(
-                            modifier = Modifier.size(26.dp),
+                            modifier = Modifier.size(28.dp),
                             painter = painterResource(navItem.icon),
                             contentDescription = navItem.label
                         )
                     },
                     colors = NavigationBarItemDefaults.colors(
                         selectedIconColor = MaterialTheme.colorScheme.primary,
-                        unselectedIconColor = MaterialTheme.colorScheme.onSecondary,
+                        unselectedIconColor = MaterialTheme.colorScheme.onSurface,
                         indicatorColor = Color.Transparent,
                     )
                 )
