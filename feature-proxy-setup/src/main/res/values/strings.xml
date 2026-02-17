@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title">Setup</string>
+
+    <string name="label_status_connecting">Connecting...</string>
+    <string name="label_status_connected">Connected</string>
+    <string name="label_status_disconnected">Disconnected</string>
+
+    <string name="label_connected_hint">Tap to disconnect</string>
+    <string name="label_connecting_hint">Please wait</string>
+    <string name="label_disconnect_hint">Tap to connect</string>
+
+    <string name="label_current_proxy">Current Proxy</string>
+    <string name="label_placeholder_proxy">No proxy configured</string>
+
+    <string name="title_add_proxy">Add proxy</string>
+    <string name="placeholder_ip">HOST</string>
+    <string name="placeholder_port">PORT</string>
+    <string name="label_credentials">Credentials (Optional)</string>
+
+    <string name="placeholder_username">Username</string>
+    <string name="placeholder_password">Password</string>
+    <string name="placeholder_secret">Secret</string>
+
+    <string name="action_add_proxy">Add proxy</string>
+
+</resources>
