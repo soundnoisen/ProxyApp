@@ -24,4 +24,6 @@
 
     <string name="action_add_proxy">Add proxy</string>
 
+    <string name="error_field_empty">Сannot be empty</string>
+    <string name="error_invalid_format">Invalid format</string>
 </resources>
