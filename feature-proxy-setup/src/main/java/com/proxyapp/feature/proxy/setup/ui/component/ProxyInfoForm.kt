@@ -15,8 +15,8 @@ fun ProxyInfoForm(
     port: String,
     onIpChange: (String) -> Unit,
     onPortChange: (String) -> Unit,
-    errorIp: String?,
-    errorPort: String?
+    ipError: String?,
+    portError: String?
 ) {
     Row(
         modifier = Modifier.fillMaxWidth(),
@@ -26,14 +26,14 @@ fun ProxyInfoForm(
             value = ip,
             onValueChange = onIpChange,
             placeholder = stringResource(R.string.placeholder_ip),
-            errorText = errorIp,
+            errorText = ipError,
             modifier = Modifier.weight(1f)
         )
         TextField(
             value = port,
             onValueChange = onPortChange,
             placeholder = stringResource(R.string.placeholder_port),
-            errorText = errorPort,
+            errorText = portError,
             isNumber = true,
             modifier = Modifier.weight(1f)
         )

@@ -29,6 +29,7 @@ fun TextField(
     isNumber: Boolean = false,
 ) {
     val isError = errorText != null
+
     val keyboardType = when {
         isPassword -> KeyboardType.Password
         isNumber -> KeyboardType.Number

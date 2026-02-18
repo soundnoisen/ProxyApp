@@ -45,9 +45,9 @@ fun ProxyProtocolSegmentedSliding(
     onUsernameChange: (String) -> Unit,
     onPasswordChange: (String) -> Unit,
     onSecretChange: (String) -> Unit,
-    errorSecret: String?,
-    errorPassword: String?,
-    errorUsername: String?,
+    secretError: String?,
+    passwordError: String?,
+    usernameError: String?,
 ) {
     val options = ProxyProtocol.entries
     val selectedIndex = options.indexOf(selectedProtocol)
@@ -113,7 +113,7 @@ fun ProxyProtocolSegmentedSliding(
                 onValueChange = onSecretChange,
                 placeholder = stringResource(R.string.placeholder_secret),
                 modifier = Modifier.fillMaxWidth(),
-                errorText = errorSecret
+                errorText = secretError
             )
         }
         AnimatedVisibility(visible = selectedProtocol != ProxyProtocol.MTPROTO) {
@@ -122,8 +122,8 @@ fun ProxyProtocolSegmentedSliding(
                 password = password,
                 onUsernameChange = onUsernameChange,
                 onPasswordChange = onPasswordChange,
-                errorPassword = errorPassword,
-                errorUsername = errorUsername
+                passwordError = passwordError,
+                usernameError = usernameError
             )
         }
     }

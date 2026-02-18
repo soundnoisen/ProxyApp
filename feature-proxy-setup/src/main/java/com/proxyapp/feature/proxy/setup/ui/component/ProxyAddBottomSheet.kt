@@ -29,11 +29,11 @@ fun ProxyAddBottomSheet(
     onUsernameChange: (String) -> Unit,
     onPasswordChange: (String) -> Unit,
     onSecretChange: (String) -> Unit,
-    errorIp: String?,
-    errorPort: String?,
-    errorSecret: String?,
-    errorPassword: String?,
-    errorUsername: String?,
+    ipError: String?,
+    portError: String?,
+    secretError: String?,
+    passwordError: String?,
+    usernameError: String?,
     onConfirm: () -> Unit,
     onDismiss: () -> Unit,
 ) {
@@ -49,10 +49,10 @@ fun ProxyAddBottomSheet(
             ProxyInfoForm(
                 ip = ip,
                 onIpChange = onIpChange,
-                errorIp = errorIp,
+                ipError = ipError,
                 port = port,
                 onPortChange = onPortChange,
-                errorPort = errorPort
+                portError = portError
             )
             ProxyProtocolSegmentedSliding(
                 selectedProtocol = protocol,
@@ -63,9 +63,9 @@ fun ProxyAddBottomSheet(
                 password = password,
                 onUsernameChange = onUsernameChange,
                 onPasswordChange = onPasswordChange,
-                errorSecret = errorSecret,
-                errorPassword = errorPassword,
-                errorUsername = errorUsername,
+                secretError = secretError,
+                passwordError = passwordError,
+                usernameError = usernameError,
             )
             ProxyAddActions(
                 onConfirm = onConfirm,

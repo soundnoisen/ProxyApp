@@ -19,8 +19,8 @@ fun CredentialsForm(
     password: String?,
     onUsernameChange: (String) -> Unit,
     onPasswordChange: (String) -> Unit,
-    errorPassword: String?,
-    errorUsername: String?,
+    passwordError: String?,
+    usernameError: String?,
 ) {
     Column(
         modifier = Modifier.fillMaxWidth(),
@@ -41,7 +41,7 @@ fun CredentialsForm(
                 onValueChange = onUsernameChange,
                 placeholder = stringResource(R.string.placeholder_username),
                 modifier = Modifier.weight(1f),
-                errorText = errorUsername
+                errorText = usernameError
             )
             TextField(
                 value = password,
@@ -49,7 +49,7 @@ fun CredentialsForm(
                 placeholder = stringResource(R.string.placeholder_password),
                 isPassword = true,
                 modifier = Modifier.weight(1f),
-                errorText = errorPassword
+                errorText = passwordError
             )
         }
     }
