@@ -32,13 +32,11 @@ val Typography = Typography(
         fontFamily = FontFamily.Default,
         fontSize = 18.sp,
         fontWeight = FontWeight.Medium,
-        textAlign = TextAlign.Center
     ),
     bodyMedium = TextStyle(
         fontFamily = FontFamily.Default,
         fontSize = 18.sp,
         fontWeight = FontWeight.Normal,
-        textAlign = TextAlign.Center
     ),
     bodySmall = TextStyle(
         fontFamily = FontFamily.Default,
