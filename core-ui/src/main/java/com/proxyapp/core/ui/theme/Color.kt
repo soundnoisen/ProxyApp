@@ -15,6 +15,7 @@ val DarkError = Color(0xFFE53C30)
 val DarkOutlineVariant = Color(0xFF1E1E1E)
 val DarkSecondary = Color(0xFF404040)
 val DarkOnSecondary = Color(0xFF393939)
+val DarkTertiary = Color(0xFF46A34A)
 
 
 val LightBackground = Color(0xFFF5F5F5)
@@ -30,6 +31,7 @@ val LightError = Color(0xFFF44336)
 val LightOutlineVariant = Color(0xFFFFFFFF)
 val LightSecondary = Color(0xFFAFAFAF)
 val LightOnSecondary = Color(0xFFAFAFAF)
+val LightTertiary = Color(0xFF4CAF50)
 
 val LightProtocolText = Color(0xFF2196F3)
 val LightProtocolBackground = Color(0xFFDBEEFD)

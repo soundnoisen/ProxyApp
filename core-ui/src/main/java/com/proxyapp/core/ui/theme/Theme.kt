@@ -19,7 +19,8 @@ private val DarkColorScheme = darkColorScheme(
     error = DarkError,
     outlineVariant = DarkOutlineVariant,
     secondary = DarkSecondary,
-    onSecondary = DarkOnSecondary
+    onSecondary = DarkOnSecondary,
+    tertiary = DarkTertiary
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -35,7 +36,8 @@ private val LightColorScheme = lightColorScheme(
     error = LightError,
     outlineVariant = LightOutlineVariant,
     secondary = LightSecondary,
-    onSecondary = LightOnSecondary
+    onSecondary = LightOnSecondary,
+    tertiary = LightTertiary
 )
 
 @Composable
