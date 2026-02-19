@@ -3,7 +3,7 @@ package com.proxyapp.feature.proxy.setup.ui.extensions
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import com.proxyapp.feature.proxy.setup.R
-import com.proxyapp.feature.proxy.setup.domain.FieldError
+import com.proxyapp.feature.proxy.setup.domain.model.FieldError
 
 @Composable
 fun FieldError.displayName(): String = when (this) {

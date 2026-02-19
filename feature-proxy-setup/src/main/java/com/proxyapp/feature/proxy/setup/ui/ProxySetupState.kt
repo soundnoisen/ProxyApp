@@ -2,8 +2,8 @@ package com.proxyapp.feature.proxy.setup.ui
 
 import com.proxyapp.domain.Proxy
 import com.proxyapp.domain.ProxyProtocol
-import com.proxyapp.feature.proxy.setup.domain.ConnectionStatus
-import com.proxyapp.feature.proxy.setup.domain.FieldError
+import com.proxyapp.feature.proxy.setup.domain.model.ConnectionStatus
+import com.proxyapp.feature.proxy.setup.domain.model.FieldError
 
 data class ProxySetupState(
     val currentProxy: Proxy? = null,
