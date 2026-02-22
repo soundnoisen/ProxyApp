@@ -14,7 +14,7 @@ fun ProtocolTag(
     TagContainer(color = colors.protocolBackground) {
         Text(
             text = protocol,
-            style = MaterialTheme.typography.labelMedium,
+            style = MaterialTheme.typography.labelSmall,
             color = colors.protocolText
         )
     }

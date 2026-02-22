@@ -35,7 +35,7 @@ fun SpeedTag(
         )
         Text(
             text = "${speed}s",
-            style = MaterialTheme.typography.labelMedium,
+            style = MaterialTheme.typography.labelSmall,
             color = textColor
         )
     }

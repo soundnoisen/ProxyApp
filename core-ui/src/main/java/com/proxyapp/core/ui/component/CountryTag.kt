@@ -26,7 +26,7 @@ fun CountryTag(
         )
         Text(
             text = country,
-            style = MaterialTheme.typography.labelMedium,
+            style = MaterialTheme.typography.labelSmall,
             color = colors.countryText
         )
     }
