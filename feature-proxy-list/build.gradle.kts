@@ -47,6 +47,7 @@ android {
 dependencies {
     implementation(project(":core-ui"))
     implementation(project(":domain"))
+    implementation(project(":data"))
     implementation(project(":core-common"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -63,5 +64,6 @@ dependencies {
 
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+    ksp(libs.androidx.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
 }
