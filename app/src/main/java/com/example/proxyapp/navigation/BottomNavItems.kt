@@ -8,6 +8,10 @@ object BottomNavRoutes {
     const val SETTINGS = "proxy_settings"
 }
 
+object NavRoutes {
+    const val FILTERS = "proxy_filters"
+}
+
 data class BottomNavItem(
     val route: String,
     val icon: Int,

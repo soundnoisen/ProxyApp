@@ -7,7 +7,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.proxyapp.feature.proxy.list.ProxyListScreen
+import com.proxyapp.feature.proxy.list.ui.filters.ProxyFiltersScreen
+import com.proxyapp.feature.proxy.list.ui.list.ProxyListScreen
 import com.proxyapp.feature.proxy.setup.ui.ProxySetupScreen
 
 @Composable
@@ -24,9 +25,17 @@ fun NavHostContainer(
                 ProxySetupScreen()
             }
             composable(BottomNavRoutes.LIST) {
-                ProxyListScreen()
+                ProxyListScreen(
+                    onNavigateToFilters = { navController.navigate(NavRoutes.FILTERS) },
+                    onNavigateToMain = { navController.navigate(BottomNavRoutes.SETUP) }
+                )
             }
             composable(BottomNavRoutes.SETTINGS) {
+            }
+            composable( NavRoutes.FILTERS) {
+                ProxyFiltersScreen(
+                    onBack = { navController.popBackStack() }
+                )
             }
         }
     )
