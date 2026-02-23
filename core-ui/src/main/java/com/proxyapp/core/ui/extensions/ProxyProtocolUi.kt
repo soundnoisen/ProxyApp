@@ -3,7 +3,7 @@ package com.proxyapp.core.ui.extensions
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import com.proxyapp.core.ui.R
-import com.proxyapp.domain.ProxyProtocol
+import com.proxyapp.domain.model.ProxyProtocol
 
 @Composable
 fun ProxyProtocol.displayName(): String = when (this) {
