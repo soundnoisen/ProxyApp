@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import com.proxyapp.core.ui.component.CountryTag
 import com.proxyapp.core.ui.component.ProtocolTag
 import com.proxyapp.core.ui.component.SpeedTag
-import com.proxyapp.domain.Proxy
+import com.proxyapp.domain.model.Proxy
 import com.proxyapp.feature.proxy.list.R
 
 @Composable
