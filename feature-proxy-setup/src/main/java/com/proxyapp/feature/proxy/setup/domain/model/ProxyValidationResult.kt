@@ -1,6 +1,6 @@
 package com.proxyapp.feature.proxy.setup.domain.model
 
-import com.proxyapp.domain.ProxyProtocol
+import com.proxyapp.domain.model.ProxyProtocol
 
 data class ProxyValidationResult(
     val ipError: FieldError? = null,

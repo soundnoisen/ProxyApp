@@ -1,6 +1,6 @@
 package com.proxyapp.feature.proxy.setup.ui
 
-import com.proxyapp.domain.ProxyProtocol
+import com.proxyapp.domain.model.ProxyProtocol
 
 sealed class ProxySetupIntent {
     data class ChangeIp(val ip: String): ProxySetupIntent()

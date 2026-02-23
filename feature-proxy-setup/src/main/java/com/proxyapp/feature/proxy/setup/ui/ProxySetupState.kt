@@ -1,7 +1,7 @@
 package com.proxyapp.feature.proxy.setup.ui
 
-import com.proxyapp.domain.Proxy
-import com.proxyapp.domain.ProxyProtocol
+import com.proxyapp.domain.model.Proxy
+import com.proxyapp.domain.model.ProxyProtocol
 import com.proxyapp.feature.proxy.setup.domain.model.ConnectionStatus
 import com.proxyapp.feature.proxy.setup.domain.model.FieldError
 

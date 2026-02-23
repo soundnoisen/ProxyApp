@@ -2,7 +2,7 @@ package com.proxyapp.feature.proxy.setup.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.proxyapp.domain.ProxyProtocol
+import com.proxyapp.domain.model.ProxyProtocol
 import com.proxyapp.feature.proxy.setup.domain.model.ConnectionStatus
 import com.proxyapp.feature.proxy.setup.domain.model.ProxyConnectionError
 import com.proxyapp.feature.proxy.setup.domain.model.ProxyConnectionProgress

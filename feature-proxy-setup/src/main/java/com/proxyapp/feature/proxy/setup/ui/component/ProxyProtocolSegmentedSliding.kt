@@ -32,7 +32,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.proxyapp.core.ui.extensions.displayName
-import com.proxyapp.domain.ProxyProtocol
+import com.proxyapp.domain.model.ProxyProtocol
 import com.proxyapp.feature.proxy.setup.R
 
 @Composable

@@ -1,7 +1,7 @@
 package com.proxyapp.feature.proxy.setup.domain.repository
 
-import com.proxyapp.domain.Proxy
-import com.proxyapp.domain.ProxyProtocol
+import com.proxyapp.domain.model.Proxy
+import com.proxyapp.domain.model.ProxyProtocol
 import com.proxyapp.feature.proxy.setup.domain.model.ProxyConnectionProgress
 import kotlinx.coroutines.flow.Flow
 

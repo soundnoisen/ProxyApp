@@ -1,6 +1,6 @@
 package com.proxyapp.feature.proxy.setup.domain.usecase
 
-import com.proxyapp.domain.ProxyProtocol
+import com.proxyapp.domain.model.ProxyProtocol
 import com.proxyapp.feature.proxy.setup.domain.model.FieldError
 import com.proxyapp.feature.proxy.setup.domain.model.ProxyValidationResult
 import jakarta.inject.Inject
