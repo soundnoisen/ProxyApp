@@ -8,9 +8,9 @@ import androidx.activity.viewModels
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import com.example.proxyapp.navigation.Navigation
-import com.proxyapp.core.ui.splash.SplashScreen
-import com.proxyapp.core.ui.splash.SplashViewModel
 import com.proxyapp.core.ui.theme.ProxyAppTheme
+import com.proxyapp.feature.splash.ui.SplashScreen
+import com.proxyapp.feature.splash.ui.SplashViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -51,6 +51,7 @@ dependencies {
     implementation(project(":core-ui"))
     implementation(project(":feature-proxy-setup"))
     implementation(project(":feature-proxy-list"))
+    implementation(project(":feature-splash"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

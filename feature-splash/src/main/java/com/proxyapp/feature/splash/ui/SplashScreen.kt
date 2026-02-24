@@ -1,4 +1,4 @@
-package com.proxyapp.core.ui.splash
+package com.proxyapp.feature.splash.ui
 
 import android.view.animation.OvershootInterpolator
 import androidx.compose.animation.core.animate
@@ -18,7 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.res.painterResource
-import com.proxyapp.core.ui.R
+import com.proxyapp.feature.splash.R
 import kotlinx.coroutines.delay
 
 @Composable
