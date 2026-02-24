@@ -10,6 +10,7 @@ import com.proxyapp.domain.model.ProxyFilters
 import com.proxyapp.domain.model.SaveError
 import com.proxyapp.domain.model.SaveResult
 import com.proxyapp.domain.repository.ProxyConnectionManager
+import com.proxyapp.domain.usecase.SetCurrentProxyUseCase
 import com.proxyapp.feature.proxy.list.domain.LoadNextPageUseCase
 import com.proxyapp.feature.proxy.list.domain.ObserveFiltersUseCase
 import com.proxyapp.feature.proxy.list.domain.ObserveProxiesUseCase
@@ -36,7 +37,7 @@ class ProxyListViewModel @Inject constructor(
     private val refreshProxies: RefreshProxiesUseCase,
     private val loadNextPage: LoadNextPageUseCase,
     private val saveProxyUseCase: SaveProxyUseCase,
-    private val proxyConnectionManager: ProxyConnectionManager
+    private val setCurrent: SetCurrentProxyUseCase
 ): ViewModel() {
 
     private val _proxies = MutableStateFlow<List<Proxy>>(emptyList())
@@ -161,7 +162,7 @@ class ProxyListViewModel @Inject constructor(
     private fun handleConnectProxy() {
         val selected = _state.value.proxySelected ?: return
         viewModelScope.launch {
-            proxyConnectionManager.connect(selected)
+            setCurrent(selected)
             toggleSheet()
             sendEffect(ProxyListEffect.NavigateToProxySetup)
         }

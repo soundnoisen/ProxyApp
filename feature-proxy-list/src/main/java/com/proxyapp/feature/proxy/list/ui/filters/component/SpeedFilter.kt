@@ -20,7 +20,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.proxyapp.feature.proxy.list.R
@@ -71,14 +70,14 @@ fun SpeedFilter(
                         Box(
                             modifier = Modifier
                                 .size(20.dp)
-                                .background(Color(0xFF2F80ED), CircleShape)
+                                .background(MaterialTheme.colorScheme.primary, CircleShape)
                         )
                     },
                     endThumb = {
                         Box(
                             modifier = Modifier
                                 .size(20.dp)
-                                .background(Color(0xFF2F80ED), CircleShape)
+                                .background(MaterialTheme.colorScheme.primary, CircleShape)
                         )
                     },
                     track = { state ->

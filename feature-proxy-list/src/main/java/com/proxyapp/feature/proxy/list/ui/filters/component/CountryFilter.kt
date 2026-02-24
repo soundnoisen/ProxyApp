@@ -6,7 +6,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -46,19 +48,26 @@ fun CountryFilter(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 if (selectedCountries.isNotEmpty()) {
-                    LazyVerticalGrid(
-                        columns = GridCells.Fixed(3),
-                        verticalArrangement = Arrangement.spacedBy(8.dp),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        modifier = Modifier.weight(1f),
-                        userScrollEnabled = false
+                    Column(
+                        modifier = Modifier.weight(1f)
                     ) {
-                        items(selectedCountries.size) { index ->
-                            val iso = selectedCountries[index]
-                            CountryTag(
-                                iso = iso,
-                                onDelete = { onDelete(iso) }
-                            )
+                        selectedCountries.chunked(3).forEach { rowCountries ->
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.spacedBy(8.dp)
+                            ) {
+                                rowCountries.forEach { iso ->
+                                    CountryTag(
+                                        iso = iso,
+                                        onDelete = { onDelete(iso) },
+                                        modifier = Modifier.weight(1f)
+                                    )
+                                }
+                                repeat(3 - rowCountries.size) {
+                                    Spacer(modifier = Modifier.weight(1f))
+                                }
+                            }
+                            Spacer(modifier = Modifier.height(8.dp))
                         }
                     }
                 } else {

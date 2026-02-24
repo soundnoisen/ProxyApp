@@ -2,9 +2,12 @@ package com.proxyapp.feature.proxy.list.ui.filters.component
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -34,7 +37,6 @@ fun CountriesBottomSheet(
     onDismiss: () -> Unit
 ) {
     val allCountryCodes = Locale.getISOCountries().sorted()
-    val scrollState = rememberScrollState()
     var searchQuery by remember { mutableStateOf("") }
 
     val filteredCountries = allCountryCodes.filter { iso ->
@@ -49,8 +51,7 @@ fun CountriesBottomSheet(
         Column(
             modifier = Modifier
                 .padding(horizontal = 16.dp)
-                .fillMaxSize()
-                .verticalScroll(scrollState),
+                .defaultMinSize(minHeight = 100.dp),
         ) {
             Title(title = stringResource(R.string.label_countries))
             Spacer(Modifier.height(16.dp))
@@ -61,7 +62,7 @@ fun CountriesBottomSheet(
                 onClearClicked = { searchQuery = "" },
             )
             LazyColumn(
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.fillMaxHeight().weight(1f)
             ) {
                 items(filteredCountries) { iso ->
                     Country(

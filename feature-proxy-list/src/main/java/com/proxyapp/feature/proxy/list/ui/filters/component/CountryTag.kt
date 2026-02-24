@@ -23,10 +23,11 @@ import com.proxyapp.feature.proxy.list.R
 @Composable
 fun CountryTag(
     iso: String,
-    onDelete: () -> Unit
+    onDelete: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .background(MaterialTheme.colorScheme.surfaceContainer, CircleShape)
             .padding(vertical = 8.dp, horizontal = 12.dp)
     ) {
