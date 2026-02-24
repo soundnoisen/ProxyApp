@@ -1,4 +1,4 @@
-package com.proxyapp.domain.usecase
+package com.proxyapp.feature.splash.domain
 
 import com.proxyapp.domain.repository.ProxyConnectionManager
 import javax.inject.Inject
