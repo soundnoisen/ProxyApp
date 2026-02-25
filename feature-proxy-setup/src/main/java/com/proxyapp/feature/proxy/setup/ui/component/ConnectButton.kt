@@ -26,17 +26,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.proxyapp.domain.model.ProxyConnectionStatus
 import com.proxyapp.feature.proxy.setup.R
-import com.proxyapp.feature.proxy.setup.domain.model.ConnectionStatus
 import kotlinx.coroutines.delay
 
 @Composable
 fun ConnectButton(
-    status: ConnectionStatus,
+    status: ProxyConnectionStatus,
     enabled: Boolean,
     onClick: () -> Unit
 ) {
-    val isConnecting = status == ConnectionStatus.CONNECTING
+    val isConnecting = status == ProxyConnectionStatus.Connecting
 
     var pressed by remember { mutableStateOf(false) }
 
@@ -79,7 +79,7 @@ fun ConnectButton(
             shape = CircleShape,
             shadowElevation = elevation,
             modifier = Modifier.size(buttonSize),
-            color = if (status == ConnectionStatus.CONNECTED) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary,
+            color = if (status == ProxyConnectionStatus.Connected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary,
         ) {
             Box(contentAlignment = Alignment.Center) {
                 if (isConnecting) {

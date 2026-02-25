@@ -1,8 +1,8 @@
 package com.proxyapp.feature.proxy.setup.ui.extensions
 
 import android.content.Context
+import com.proxyapp.domain.model.ProxyConnectionError
 import com.proxyapp.feature.proxy.setup.R
-import com.proxyapp.feature.proxy.setup.domain.model.ProxyConnectionError
 
 fun ProxyConnectionError.displayName(context: Context): String = when(this) {
     ProxyConnectionError.PROXY_NOT_SELECTED -> context.getString(R.string.error_proxy_not_selected)
