@@ -22,8 +22,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.proxyapp.core.ui.component.SnackBar
 import com.proxyapp.core.ui.extensions.displayName
+import com.proxyapp.domain.model.ProxyConnectionStatus
 import com.proxyapp.feature.proxy.setup.R
-import com.proxyapp.feature.proxy.setup.domain.model.ConnectionStatus
 import com.proxyapp.feature.proxy.setup.ui.component.ConnectButton
 import com.proxyapp.feature.proxy.setup.ui.component.ConnectStatus
 import com.proxyapp.feature.proxy.setup.ui.component.CurrentProxyCard
@@ -33,6 +33,7 @@ import com.proxyapp.feature.proxy.setup.ui.component.ProxySetupTopBar
 import com.proxyapp.feature.proxy.setup.ui.extensions.displayHint
 import com.proxyapp.feature.proxy.setup.ui.extensions.displayName
 import com.proxyapp.feature.proxy.setup.ui.extensions.displayTitle
+import com.proxyapp.feature.proxy.setup.ui.permission.VpnPermissionRequester
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
@@ -44,6 +45,12 @@ fun ProxySetupScreen(
     var isError by remember { mutableStateOf(false) }
 
     val context = LocalContext.current
+
+    val requestVpnPermission = VpnPermissionRequester(
+        onPermissionGranted = {
+            viewModel.onIntent(ProxySetupIntent.Connect)
+        }
+    )
 
     LaunchedEffect(Unit) {
         viewModel.effect.collectLatest { effect ->
@@ -81,12 +88,13 @@ fun ProxySetupScreen(
             Spacer(Modifier.height(80.dp))
             ConnectButton(
                 status = state.connectionStatus,
-                enabled = !(state.connectionStatus == ConnectionStatus.CONNECTING || state.connectionStatus == ConnectionStatus.DISCONNECTING),
+                enabled = !(state.connectionStatus == ProxyConnectionStatus.Connecting || state.connectionStatus == ProxyConnectionStatus.Disconnecting),
                 onClick = {
-                    viewModel.onIntent(
-                        if (state.connectionStatus == ConnectionStatus.CONNECTED) ProxySetupIntent.Disconnect
-                        else ProxySetupIntent.Connect
-                    )
+                    if (state.connectionStatus == ProxyConnectionStatus.Connected) {
+                        viewModel.onIntent(ProxySetupIntent.Disconnect)
+                    } else {
+                        requestVpnPermission()
+                    }
                 }
             )
 
