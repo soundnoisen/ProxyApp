@@ -6,5 +6,6 @@ sealed class SaveResult {
 }
 
 enum class SaveError {
-    UNKNOWN
+    UNKNOWN,
+    EXISTS
 }
