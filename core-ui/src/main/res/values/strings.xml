@@ -4,5 +4,4 @@
     <string name="protocol_mtproto">MTPROTO</string>
     <string name="protocol_socks5">SOCKS5</string>
     <string name="protocol_socks4">SOCKS4</string>
-    <string name="action_cancel">Cancel</string>
 </resources>

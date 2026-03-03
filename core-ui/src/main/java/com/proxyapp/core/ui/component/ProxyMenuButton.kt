@@ -1,4 +1,4 @@
-package com.proxyapp.feature.proxy.list.ui.list.component
+package com.proxyapp.core.ui.component
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement

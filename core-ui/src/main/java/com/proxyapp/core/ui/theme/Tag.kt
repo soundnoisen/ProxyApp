@@ -13,7 +13,9 @@ object TagColors {
         speedHighText = LightSpeedHighText,
         speedHighBackground = LightSpeedHighBackground,
         countryText = LightCountryText,
-        countryBackground = LightCountryBackground
+        countryBackground = LightCountryBackground,
+        manualText = LightManualText,
+        manualBackground = LightManualBackground,
     )
     val dark = TagColorsScheme(
         protocolText = DarkProtocolText,
@@ -25,7 +27,9 @@ object TagColors {
         speedHighText = DarkSpeedHighText,
         speedHighBackground = DarkSpeedHighBackground,
         countryText = DarkCountryText,
-        countryBackground = DarkCountryBackground
+        countryBackground = DarkCountryBackground,
+        manualText = DarkManualText ,
+        manualBackground = DarkManualBackground
     )
 }
 
@@ -39,5 +43,7 @@ data class TagColorsScheme(
     val speedHighText: Color,
     val speedHighBackground: Color,
     val countryText: Color,
-    val countryBackground: Color
+    val countryBackground: Color,
+    val manualText: Color,
+    val manualBackground: Color
 )

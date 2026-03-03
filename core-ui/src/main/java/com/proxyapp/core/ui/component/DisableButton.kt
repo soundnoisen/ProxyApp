@@ -9,12 +9,11 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.proxyapp.core.ui.R
 
 @Composable
 fun DisableButton(
+    text: String,
     modifier: Modifier = Modifier,
     onClick: () -> Unit
 ) {
@@ -31,7 +30,7 @@ fun DisableButton(
     ) {
         Text(
             color = MaterialTheme.colorScheme.primary,
-            text = stringResource(R.string.action_cancel),
+            text = text,
             style = MaterialTheme.typography.labelMedium,
         )
     }

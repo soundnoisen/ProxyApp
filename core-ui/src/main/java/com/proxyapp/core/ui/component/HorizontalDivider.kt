@@ -1,4 +1,4 @@
-package com.proxyapp.feature.proxy.list.ui.list.component
+package com.proxyapp.core.ui.component
 
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
