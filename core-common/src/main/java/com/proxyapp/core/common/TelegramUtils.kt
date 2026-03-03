@@ -1,22 +1,42 @@
 package com.proxyapp.core.common
 
-object TelegramUtils {
-    fun buildTelegramUrl(connectString: String?): String? {
-        if (connectString.isNullOrBlank()) return null
+import android.net.Uri
+import com.proxyapp.domain.model.Proxy
+import com.proxyapp.domain.model.ProxyProtocol
 
-        return when {
-            connectString.startsWith("tg://") -> connectString
-            connectString.startsWith("socks5://") -> {
-                val cleaned = connectString.removePrefix("socks5://")
-                val parts = cleaned.split(":")
-                if (parts.size == 2) {
-                    val server = parts[0]
-                    val port = parts[1]
-                    "tg://proxy?server=$server&port=$port"
-                } else null
-            }
+object TelegramProxyMapper {
 
+    fun Proxy.toTelegramUrl(): String? {
+        return when (protocol) {
+            ProxyProtocol.SOCKS5 -> { buildTelegramSocksUrl() }
+            ProxyProtocol.MTPROTO -> { buildTelegramMTProtoUrl() }
             else -> null
         }
+    }
+
+    private fun Proxy.buildTelegramSocksUrl(): String {
+        val builder = Uri.Builder()
+            .scheme("https")
+            .authority("t.me")
+            .path("socks")
+            .appendQueryParameter("server", ip)
+            .appendQueryParameter("port", port.toString())
+
+        username?.let { builder.appendQueryParameter("user", it) }
+        password?.let { builder.appendQueryParameter("pass", it) }
+
+        return builder.build().toString()
+    }
+
+    private fun Proxy.buildTelegramMTProtoUrl(): String {
+        return Uri.Builder()
+            .scheme("https")
+            .authority("t.me")
+            .path("proxy")
+            .appendQueryParameter("server", ip)
+            .appendQueryParameter("port", port.toString())
+            .appendQueryParameter("secret", secret)
+            .build()
+            .toString()
     }
 }
