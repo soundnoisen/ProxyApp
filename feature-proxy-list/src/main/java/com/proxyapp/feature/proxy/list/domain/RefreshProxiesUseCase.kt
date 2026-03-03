@@ -9,7 +9,7 @@ import javax.inject.Inject
 class RefreshProxiesUseCase @Inject constructor(
     private val repository: ProxyRepository
 ) {
-    suspend operator fun invoke(filters: ProxyFilters): Flow<LoadProgress> {
+    operator fun invoke(filters: ProxyFilters): Flow<LoadProgress> {
         return repository.refresh(filters)
     }
 }

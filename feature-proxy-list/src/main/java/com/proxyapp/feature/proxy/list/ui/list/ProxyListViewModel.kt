@@ -2,20 +2,20 @@ package com.proxyapp.feature.proxy.list.ui.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.proxyapp.core.common.TelegramUtils
+import com.proxyapp.core.common.TelegramProxyMapper.toTelegramUrl
 import com.proxyapp.domain.model.LoadError
 import com.proxyapp.domain.model.LoadProgress
 import com.proxyapp.domain.model.Proxy
 import com.proxyapp.domain.model.ProxyFilters
-import com.proxyapp.domain.model.SaveError
 import com.proxyapp.domain.model.SaveResult
-import com.proxyapp.domain.repository.ProxyConnectionManager
+import com.proxyapp.domain.usecase.DeleteProxyUseCase
+import com.proxyapp.domain.usecase.SaveProxyUseCase
 import com.proxyapp.domain.usecase.SetCurrentProxyUseCase
 import com.proxyapp.feature.proxy.list.domain.LoadNextPageUseCase
 import com.proxyapp.feature.proxy.list.domain.ObserveFiltersUseCase
 import com.proxyapp.feature.proxy.list.domain.ObserveProxiesUseCase
+import com.proxyapp.feature.proxy.list.domain.ProxyExistsUseCase
 import com.proxyapp.feature.proxy.list.domain.RefreshProxiesUseCase
-import com.proxyapp.feature.proxy.list.domain.SaveProxyUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
@@ -36,7 +36,9 @@ class ProxyListViewModel @Inject constructor(
     observeProxies: ObserveProxiesUseCase,
     private val refreshProxies: RefreshProxiesUseCase,
     private val loadNextPage: LoadNextPageUseCase,
-    private val saveProxyUseCase: SaveProxyUseCase,
+    private val proxyExists: ProxyExistsUseCase,
+    private val saveProxy: SaveProxyUseCase,
+    private val removeProxy: DeleteProxyUseCase,
     private val setCurrent: SetCurrentProxyUseCase
 ): ViewModel() {
 
@@ -78,6 +80,17 @@ class ProxyListViewModel @Inject constructor(
             is ProxyListIntent.OpenMenu -> handleOpenMenu(intent.proxy)
             is ProxyListIntent.CardClicked -> handleCardClicked(intent.proxy)
             ProxyListIntent.Load -> load()
+            ProxyListIntent.RemoveProxy -> handleRemoveProxy()
+        }
+    }
+
+    private fun handleRemoveProxy() {
+        _state.value.proxySelected?.let { proxy ->
+            viewModelScope.launch {
+                removeProxy(proxy)
+                _state.update { it.copy(isSelectedProxySaved = !it.isSelectedProxySaved) }
+                sendEffect(ProxyListEffect.ProxyRemove)
+            }
         }
     }
 
@@ -93,8 +106,8 @@ class ProxyListViewModel @Inject constructor(
         }
     }
 
-    private suspend fun handleLoadProgress(flow: Flow<LoadProgress>) {
-        flow.collect { result ->
+    private fun handleLoadProgress(flow: Flow<LoadProgress>) {
+        flow.onEach { result ->
             when (result) {
                 LoadProgress.Loading -> _state.update { it.copy(isLoading = true) }
                 LoadProgress.Success -> _state.update { it.copy(isLoading = false) }
@@ -103,7 +116,7 @@ class ProxyListViewModel @Inject constructor(
                     emitError(result.error)
                 }
             }
-        }
+        }.launchIn(viewModelScope)
     }
 
     private fun handleOpenMenu(proxy: Proxy) {
@@ -117,7 +130,9 @@ class ProxyListViewModel @Inject constructor(
     }
 
     private fun proxySelect(proxy: Proxy) {
-        _state.update { it.copy(proxySelected = proxy) }
+        viewModelScope.launch {
+            _state.update { it.copy(proxySelected = proxy, isSelectedProxySaved = proxyExists(proxy)) }
+        }
     }
 
     private fun handleCloseMenu() {
@@ -132,11 +147,10 @@ class ProxyListViewModel @Inject constructor(
     private fun handleSaveProxy() {
         val selected = _state.value.proxySelected ?: return
         viewModelScope.launch {
-            saveProxyUseCase(selected).collect { result ->
-                when (result) {
-                    is SaveResult.Error -> emitError(result.error)
-                    SaveResult.Success -> sendEffect(ProxyListEffect.ProxySaved)
-                }
+            val result = saveProxy(selected)
+            if (result is SaveResult.Success) {
+                _state.update { it.copy(isSelectedProxySaved = !it.isSelectedProxySaved) }
+                sendEffect(ProxyListEffect.ProxySaved)
             }
         }
     }
@@ -153,9 +167,10 @@ class ProxyListViewModel @Inject constructor(
     }
 
     private fun handleConnectToTelegramProxy() {
-        _state.value.proxySelected?.let {
-            val url = TelegramUtils.buildTelegramUrl(it.connectString)
-            if (url != null) sendEffect(ProxyListEffect.NavigateToTelegram(url))
+        _state.value.proxySelected?.let { proxy ->
+            proxy.toTelegramUrl()?.let {
+                sendEffect(ProxyListEffect.NavigateToTelegram(it))
+            }
         }
     }
 
@@ -170,10 +185,6 @@ class ProxyListViewModel @Inject constructor(
 
     private fun emitError(error: LoadError) {
         sendEffect(ProxyListEffect.ShowLoadError(error))
-    }
-
-    private fun emitError(error: SaveError) {
-        sendEffect(ProxyListEffect.ShowSaveError(error))
     }
 
     private fun sendEffect(effect: ProxyListEffect) {

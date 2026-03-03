@@ -19,6 +19,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.proxyapp.core.ui.component.CountryTag
 import com.proxyapp.core.ui.component.ProtocolTag
+import com.proxyapp.core.ui.component.ProxyIpWithIndicator
 import com.proxyapp.core.ui.component.SpeedTag
 import com.proxyapp.domain.model.Proxy
 import com.proxyapp.feature.proxy.list.R
@@ -58,13 +59,11 @@ fun ProxyCard(
                     port = proxy.port,
                     color = colorIndicator
                 )
-                proxy.lastChecked?.let {
-                    ProxyDateChecked(date = it)
-                }
-                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)){
+                proxy.lastChecked?.let { ProxyDateChecked(date = it) }
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     ProtocolTag(proxy.protocol.name)
                     CountryTag(proxy.country.orEmpty())
-                    SpeedTag(proxy.speed)
+                    if (proxy.speed > 0f) SpeedTag(proxy.speed)
                 }
             }
             IconButton(onClick = onMenuClick) {

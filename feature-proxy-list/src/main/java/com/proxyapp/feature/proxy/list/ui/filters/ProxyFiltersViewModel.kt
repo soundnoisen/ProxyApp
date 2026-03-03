@@ -56,7 +56,7 @@ class ProxyFiltersViewModel @Inject constructor(
 
     private fun handleNavigateToBack() {
         viewModelScope.launch {
-            saveFiltersUseCase.invoke(_state.value.toDomain())
+            saveFiltersUseCase(_state.value.toDomain())
             sendEffect(ProxyFiltersEffect.NavigateToBack)
         }
     }
@@ -94,7 +94,15 @@ class ProxyFiltersViewModel @Inject constructor(
     }
 
     private fun handleReset() {
-        _state.value = ProxyFiltersState()
+        _state.update { it.copy(
+            activeOnly = false,
+            protocols = emptyList(),
+            speedRange = SpeedRange(),
+            countriesIso = emptyList(),
+            telegramFilter = false,
+            isSheetVisible =  false,
+            isLoading = false)
+        }
     }
 
     private fun sendEffect(effect: ProxyFiltersEffect) {

@@ -4,6 +4,7 @@ import com.proxyapp.domain.model.Proxy
 
 data class ProxyListState(
     val proxySelected: Proxy? = null,
+    val isSelectedProxySaved: Boolean = false,
     val isSheetVisible: Boolean = false,
     val isLoading: Boolean = false
 )

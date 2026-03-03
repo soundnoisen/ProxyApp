@@ -2,11 +2,12 @@
 <resources>
     <string name="title_proxy_list">Proxies</string>
 
-    <string name="label_empty_proxy_list">No proxy yet</string>
-    <string name="body_empty_proxy_list">Please try refresh the list</string>
+    <string name="placeholder_proxy_list">No proxy yet</string>
+    <string name="placeholder_hint_proxy_list">Please try refresh the list</string>
     <string name="label_date_checked">Checked</string>
     <string name="label_menu_copy_to_clipboard">Copy to clipboard</string>
     <string name="label_menu_save">Save</string>
+    <string name="label_menu_remove">Remove</string>
     <string name="label_menu_connect">Connect</string>
     <string name="label_menu_connect_to_telegram">Connect to Telegram</string>
 
@@ -34,7 +35,5 @@
     <string name="error_load_unknown">Unknown: try again later</string>
 
     <string name="message_proxy_saved">Proxy saved in list on main</string>
-
-    <string name="error_save_unknown">Unknown: something went wrong</string>
-
+    <string name="message_proxy_remove">Proxy removed from saved list</string>
 </resources>

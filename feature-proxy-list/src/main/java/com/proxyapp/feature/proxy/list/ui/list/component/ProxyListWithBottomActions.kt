@@ -14,6 +14,7 @@ fun ProxyListWithBottomActions(
     proxies: List<Proxy>,
     selectedProxy: Proxy?,
     isSheetVisible: Boolean,
+    isSelectedProxySaved: Boolean,
     isLoading: Boolean,
     onMenuOpen: (Proxy) -> Unit,
     onDismiss: () -> Unit,
@@ -22,6 +23,7 @@ fun ProxyListWithBottomActions(
     onConnect: () -> Unit,
     onConnectToTelegram: () -> Unit,
     onSave: () -> Unit,
+    onRemove: () -> Unit,
     onLoadNextPage: () -> Unit
 ) {
     if (proxies.isEmpty() && !isLoading) {
@@ -47,9 +49,12 @@ fun ProxyListWithBottomActions(
     if (isSheetVisible) {
         selectedProxy?.let { proxy ->
             ProxyMenuBottomSheet(
+                isSelectedProxySaved = isSelectedProxySaved,
+                protocol = proxy.protocol,
                 onDismiss = onDismiss,
                 onCopy = onCopy,
                 onSave = onSave,
+                onRemove = onRemove,
                 onConnect = onConnect,
                 telegramCompatible = proxy.protocol == ProxyProtocol.SOCKS5 || proxy.protocol == ProxyProtocol.MTPROTO,
                 onConnectToTelegram = onConnectToTelegram

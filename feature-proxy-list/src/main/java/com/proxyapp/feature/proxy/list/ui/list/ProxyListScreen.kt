@@ -59,9 +59,9 @@ fun ProxyListScreen(
                 is ProxyListEffect.NavigateToTelegram -> { context.startActivity(Intent(Intent.ACTION_VIEW, effect.url.toUri()))}
                 is ProxyListEffect.NavigateToFilters -> onNavigateToFilters()
                 is ProxyListEffect.ShowLoadError -> { snackBarHostState.showSnackbar(effect.error.displayName(context)) }
-                is ProxyListEffect.ShowSaveError -> { snackBarHostState.showSnackbar(effect.error.displayName(context)) }
                 is ProxyListEffect.ProxySaved -> { Toast.makeText(context, R.string.message_proxy_saved, Toast.LENGTH_SHORT).show() }
                 is ProxyListEffect.NavigateToProxySetup -> onNavigateToMain()
+                ProxyListEffect.ProxyRemove -> { Toast.makeText(context, R.string.message_proxy_remove, Toast.LENGTH_SHORT).show() }
             }
         }
     }
@@ -100,6 +100,7 @@ fun ProxyListScreen(
                     proxies = proxies,
                     selectedProxy = state.proxySelected,
                     isSheetVisible = state.isSheetVisible,
+                    isSelectedProxySaved = state.isSelectedProxySaved,
                     isLoading = state.isLoading,
                     onLoadNextPage = { viewModel.onIntent(ProxyListIntent.Load) },
                     onCardClick = { viewModel.onIntent(ProxyListIntent.CardClicked(it)) },
@@ -108,6 +109,7 @@ fun ProxyListScreen(
                     onCopy = { viewModel.onIntent(ProxyListIntent.CopyProxy) },
                     onConnect = { viewModel.onIntent(ProxyListIntent.ConnectProxy) },
                     onSave = { viewModel.onIntent(ProxyListIntent.SaveProxy) },
+                    onRemove = { viewModel.onIntent(ProxyListIntent.RemoveProxy) },
                     onConnectToTelegram = { viewModel.onIntent(ProxyListIntent.ConnectToTelegramProxy) },
                     )
             }

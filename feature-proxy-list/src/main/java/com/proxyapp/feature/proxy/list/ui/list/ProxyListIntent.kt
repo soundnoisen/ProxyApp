@@ -11,6 +11,7 @@ sealed class ProxyListIntent() {
     data class OpenMenu(val proxy: Proxy): ProxyListIntent()
     object CopyProxy: ProxyListIntent()
     object SaveProxy: ProxyListIntent()
+    object RemoveProxy: ProxyListIntent()
     object ConnectProxy: ProxyListIntent()
     object ConnectToTelegramProxy: ProxyListIntent()
 }
