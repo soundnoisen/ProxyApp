@@ -16,4 +16,8 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindProxyRepository(impl: ProxyRepositoryImpl): ProxyRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindFavoritesProxyRepository(impl: SavedProxyRepositoryImpl): SavedProxyRepository
 }
