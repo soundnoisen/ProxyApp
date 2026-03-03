@@ -31,8 +31,8 @@ fun CurrentProxyCard(
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             ProtocolTag(protocol = protocol)
-            CountryTag(country = country)
-            SpeedTag(speed = speed)
+            if (country.isNotEmpty()) CountryTag(country = country)
+            if (speed != 0f) SpeedTag(speed = speed)
         }
     }
 }

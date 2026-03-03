@@ -34,7 +34,8 @@ fun ProxyAddBottomSheet(
     secretError: String?,
     passwordError: String?,
     usernameError: String?,
-    onConfirm: () -> Unit,
+    onAdd: () -> Unit,
+    onReset: () -> Unit,
     onDismiss: () -> Unit,
 ) {
     ModalBottomSheet(
@@ -68,9 +69,64 @@ fun ProxyAddBottomSheet(
                 usernameError = usernameError,
             )
             ProxyAddActions(
-                onConfirm = onConfirm,
-                onDismiss = onDismiss
+                onAdd = onAdd,
+                onReset = onReset
             )
         }
+    }
+}
+
+@Composable
+fun ProxyAppSheetContent(
+    ip: String,
+    port: String,
+    protocol: ProxyProtocol,
+    username: String?,
+    password: String?,
+    secret: String?,
+    onIpChange: (String) -> Unit,
+    onPortChange: (String) -> Unit,
+    onProtocolChange: (ProxyProtocol) -> Unit,
+    onUsernameChange: (String) -> Unit,
+    onPasswordChange: (String) -> Unit,
+    onSecretChange: (String) -> Unit,
+    ipError: String?,
+    portError: String?,
+    secretError: String?,
+    passwordError: String?,
+    usernameError: String?,
+    onAdd: () -> Unit,
+    onReset: () -> Unit,
+) {
+    Column(
+        modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        Title(title = stringResource(R.string.title_add_proxy))
+        ProxyInfoForm(
+            ip = ip,
+            onIpChange = onIpChange,
+            ipError = ipError,
+            port = port,
+            onPortChange = onPortChange,
+            portError = portError
+        )
+        ProxyProtocolSegmentedSliding(
+            selectedProtocol = protocol,
+            onProtocolChange = onProtocolChange,
+            secret = secret,
+            onSecretChange = onSecretChange,
+            username = username,
+            password = password,
+            onUsernameChange = onUsernameChange,
+            onPasswordChange = onPasswordChange,
+            secretError = secretError,
+            passwordError = passwordError,
+            usernameError = usernameError,
+        )
+        ProxyAddActions(
+            onAdd = onAdd,
+            onReset = onReset
+        )
     }
 }

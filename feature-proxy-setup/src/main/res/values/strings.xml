@@ -24,6 +24,7 @@
     <string name="placeholder_secret">Secret</string>
 
     <string name="action_add_proxy">Add proxy</string>
+    <string name="action_add_reset">Reset</string>
     <string name="message_proxy_added">Proxy added successfully</string>
 
     <string name="error_field_empty">Сannot be empty</string>
@@ -33,4 +34,24 @@
     <string name="error_proxy_host_not_found">Host not found</string>
     <string name="error_proxy_connection_refused">Connection refused</string>
     <string name="error_proxy_unknown">Unknown proxy error</string>
+
+    <string name="message_vpn_permission_denied">VPN permission denied</string>
+
+    <string name="message_proxy_saved">Proxy saved in list on main</string>
+    <string name="message_proxy_copied">Proxy copy to clipboard</string>
+
+    <string name="label_menu_copy_to_clipboard">Copy to clipboard</string>
+    <string name="label_menu_delete">Delete</string>
+    <string name="label_menu_connect">Connect</string>
+    <string name="label_menu_disconnect">Disconnect</string>
+    <string name="label_menu_connect_to_telegram">Connect to Telegram</string>
+    <string name="label_menu_close">Close</string>
+    <string name="label_saved_proxies">Saved proxies</string>
+    <string name="label_tag_manual">Manual</string>
+
+    <string name="placeholder_saved_proxies">No saved proxies</string>
+    <string name="placeholder_hint_saved_proxies">Add a proxy manually or select from the list</string>
+
+    <string name="error_save_unknown">Unknown: something went wrong</string>
+    <string name="error_save_exists">Duplicate: proxy already been added</string>
 </resources>

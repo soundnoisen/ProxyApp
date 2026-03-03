@@ -7,10 +7,16 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
+import com.proxyapp.feature.proxy.setup.R
 
 @Composable
-fun VpnPermissionRequester(onPermissionGranted: () -> Unit, onPermissionDenied: (() -> Unit)? = null): () -> Unit {
+fun VpnPermissionRequester(
+    onPermissionGranted: () -> Unit,
+    onPermissionDenied: (() -> Unit)? = null
+): () -> Unit {
     val context = LocalContext.current
+    val message = stringResource(R.string.message_vpn_permission_denied)
 
     val launcher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.StartActivityForResult()
@@ -19,7 +25,7 @@ fun VpnPermissionRequester(onPermissionGranted: () -> Unit, onPermissionDenied: 
             onPermissionGranted()
         } else {
             onPermissionDenied?.invoke()
-            Toast.makeText(context, "VPN permission denied", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, message, Toast.LENGTH_LONG).show()
         }
     }
 

@@ -13,19 +13,20 @@ import com.proxyapp.feature.proxy.setup.R
 
 @Composable
 fun ProxyAddActions(
-    onConfirm: () -> Unit,
-    onDismiss: () -> Unit,
+    onAdd: () -> Unit,
+    onReset: () -> Unit,
 ) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         DisableButton(
-            onClick = { onDismiss() },
+            text = stringResource(R.string.action_add_reset),
+            onClick = { onReset() },
             modifier = Modifier.weight(1f)
         )
         ConfirmButton(
-            onClick = { onConfirm() },
+            onClick = { onAdd() },
             text = stringResource(R.string.action_add_proxy),
             modifier = Modifier.weight(1f)
         )
