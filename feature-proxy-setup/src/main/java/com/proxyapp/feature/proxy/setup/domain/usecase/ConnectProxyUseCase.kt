@@ -1,10 +1,10 @@
 package com.proxyapp.feature.proxy.setup.domain.usecase
 
 import com.proxyapp.domain.repository.ProxyConnectionManager
-import jakarta.inject.Inject
+import javax.inject.Inject
 
-class DisconnectProxyUseCase @Inject constructor(
+class ConnectProxyUseCase @Inject constructor(
     private val repository: ProxyConnectionManager
 ) {
-    operator fun invoke() = repository.disconnect()
+    operator fun invoke() = repository.connect()
 }
