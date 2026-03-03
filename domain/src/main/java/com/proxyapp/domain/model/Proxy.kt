@@ -1,10 +1,10 @@
 package com.proxyapp.domain.model
 
 data class Proxy(
-    val id: Long,
+    val id: String,
     val ip: String,
     val port: Int,
-    val speed: Float,
+    val speed: Float = 0f,
     val protocol: ProxyProtocol,
     val isValid: Boolean = false,
     val country: String? = null,
@@ -13,6 +13,7 @@ data class Proxy(
     val secret: String? = null,
     val username: String? = null,
     val password: String? = null,
+    val source: ProxySource
 )
 
 enum class ProxyProtocol {
@@ -26,4 +27,9 @@ enum class ProxyProtocol {
         )
         fun fromString(value: String) = mapping[value.lowercase()] ?: HTTP
     }
+}
+
+enum class ProxySource {
+    API,
+    MANUAL
 }
