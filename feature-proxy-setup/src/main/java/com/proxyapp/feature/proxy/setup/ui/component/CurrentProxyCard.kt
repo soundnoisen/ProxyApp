@@ -1,14 +1,10 @@
 package com.proxyapp.feature.proxy.setup.ui.component
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.unit.dp
-import com.proxyapp.core.ui.component.CountryTag
-import com.proxyapp.core.ui.component.ProtocolTag
-import com.proxyapp.core.ui.component.SpeedTag
+import com.proxyapp.core.ui.component.ProxyTags
+import com.proxyapp.domain.model.ThemeMode
 
 @Composable
 fun CurrentProxyCard(
@@ -17,7 +13,8 @@ fun CurrentProxyCard(
     protocol: String,
     country: String,
     speed: Float,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    currentTheme: ThemeMode
 ) {
     Card(
         onClick = onClick
@@ -27,12 +24,11 @@ fun CurrentProxyCard(
             style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.onBackground
         )
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            ProtocolTag(protocol = protocol)
-            if (country.isNotEmpty()) CountryTag(country = country)
-            if (speed != 0f) SpeedTag(speed = speed)
-        }
+        ProxyTags(
+            protocol = protocol,
+            country = country,
+            speed = speed,
+            currentTheme = currentTheme
+        )
     }
 }

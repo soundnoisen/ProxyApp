@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import com.proxyapp.core.ui.component.Title
 import com.proxyapp.domain.model.Proxy
 import com.proxyapp.domain.model.ProxyProtocol
+import com.proxyapp.domain.model.ThemeMode
 import com.proxyapp.feature.proxy.setup.R
 
 @Composable
@@ -21,6 +22,7 @@ fun ProxyListSheetContent(
     onConnectToTelegram: (Proxy) -> Unit,
     onSelectProxy: (Proxy) -> Unit,
     onMenuOpen: (Proxy) -> Unit,
+    currentTheme: ThemeMode
 ) {
     val sortedProxies = remember(proxies, currentProxy) {
         proxies.sortedByDescending { it.id == currentProxy?.id }
@@ -39,7 +41,8 @@ fun ProxyListSheetContent(
                     proxy = proxy,
                     isCurrentProxy = isCurrentProxy,
                     onClick = { onClick(proxy) },
-                    onMenuClick = { onMenuOpen(proxy) }
+                    onMenuClick = { onMenuOpen(proxy) },
+                    currentTheme = currentTheme,
                 )
             }
         } else {

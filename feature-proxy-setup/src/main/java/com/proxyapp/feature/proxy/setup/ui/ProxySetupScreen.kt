@@ -29,9 +29,9 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.proxyapp.core.common.openUrl
 import com.proxyapp.core.ui.component.SnackBar
-import com.proxyapp.core.ui.extensions.displayName
 import com.proxyapp.domain.model.ProxyConnectionStatus
 import com.proxyapp.domain.model.ProxyProtocol
+import com.proxyapp.domain.model.ThemeMode
 import com.proxyapp.feature.proxy.setup.R
 import com.proxyapp.feature.proxy.setup.ui.ProxySetupIntent.AddProxy
 import com.proxyapp.feature.proxy.setup.ui.ProxySetupIntent.ChangeIp
@@ -68,6 +68,7 @@ import kotlinx.coroutines.flow.collectLatest
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProxySetupScreen(
+    currentTheme: ThemeMode,
     viewModel: ProxySetupViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsState()
@@ -148,10 +149,11 @@ fun ProxySetupScreen(
                 CurrentProxyCard(
                     ip = proxy.ip,
                     port = proxy.port.toString(),
-                    protocol = proxy.protocol.displayName(),
+                    protocol = proxy.protocol.name.uppercase(),
                     country = proxy.country.orEmpty(),
                     speed = proxy.speed,
-                    onClick = { viewModel.onIntent(ShowListSheet) }
+                    onClick = { viewModel.onIntent(ShowListSheet) },
+                    currentTheme = currentTheme
                 )
             } ?: PlaceholderCard { viewModel.onIntent(ShowListSheet) }
 
@@ -170,7 +172,7 @@ fun ProxySetupScreen(
                                 onDelete = { viewModel.onIntent(DeleteProxy) },
                                 onConnectToTelegram = { viewModel.onIntent(ConnectToTelegramProxy(state.selectedProxy)) },
                                 onDisconnect = { viewModel.onIntent(Disconnect) },
-                                onDismiss = { viewModel.onIntent(HiddenSheet) }
+                                onDismiss = { viewModel.onIntent(ShowListSheet) }
                             )
                         ProxySheetState.Add ->
                             ProxyAppSheetContent(
@@ -199,7 +201,8 @@ fun ProxySetupScreen(
                             currentProxy = state.currentProxy,
                             onConnectToTelegram = { viewModel.onIntent(ConnectToTelegramProxy(it)) },
                             onSelectProxy = { viewModel.onIntent(SelectProxy(it)) },
-                            onMenuOpen = { viewModel.onIntent(ShowActionsSheet(it)) }
+                            onMenuOpen = { viewModel.onIntent(ShowActionsSheet(it)) },
+                            currentTheme = currentTheme
                         )
                         ProxySheetState.Hidden -> Unit
                     }

@@ -30,6 +30,7 @@ fun ProxyMenuSheetContent(
         ProxyMenuButton(stringResource(R.string.label_menu_copy_to_clipboard)) { onCopy() }
         HorizontalDivider()
         ProxyMenuButton(stringResource(R.string.label_menu_delete)) { onDelete() }
+        HorizontalDivider()
         if (isCurrentProxy && isConnected) {
             ProxyMenuButton(stringResource(R.string.label_menu_disconnect)) { onDisconnect() }
             HorizontalDivider()

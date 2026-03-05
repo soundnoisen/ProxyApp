@@ -31,7 +31,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.proxyapp.core.ui.extensions.displayName
 import com.proxyapp.domain.model.ProxyProtocol
 import com.proxyapp.feature.proxy.setup.R
 
@@ -99,7 +98,7 @@ fun ProxyProtocolSegmentedSliding(
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = protocol.displayName(),
+                            text = protocol.name.uppercase(),
                             style = MaterialTheme.typography.bodyMedium,
                             color = textColor
                         )
