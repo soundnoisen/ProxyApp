@@ -49,8 +49,11 @@ android {
 
 dependencies {
     implementation(project(":core-ui"))
+    implementation(project(":data"))
+    implementation(project(":domain"))
     implementation(project(":feature-proxy-setup"))
     implementation(project(":feature-proxy-list"))
+    implementation(project(":feature-settings"))
     implementation(project(":feature-splash"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

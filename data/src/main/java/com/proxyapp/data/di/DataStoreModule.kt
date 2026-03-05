@@ -42,6 +42,15 @@ object DataStoreModule {
             produceFile = { context.preferencesDataStoreFile("connected_proxy_id") }
         )
     }
+
+    @Provides
+    @Singleton
+    @ThemeDataStore
+    fun provideThemeDataStore(@ApplicationContext context: Context): DataStore<Preferences> {
+        return PreferenceDataStoreFactory.create(
+            produceFile = { context.preferencesDataStoreFile("theme_pref") }
+        )
+    }
 }
 
 
@@ -52,3 +61,7 @@ annotation class FiltersDataStore
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
 annotation class ProxyDataStore
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class ThemeDataStore

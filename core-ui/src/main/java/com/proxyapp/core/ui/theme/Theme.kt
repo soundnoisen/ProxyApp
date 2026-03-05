@@ -5,6 +5,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import com.proxyapp.domain.model.ThemeMode
 
 private val DarkColorScheme = darkColorScheme(
     background = DarkBackground,
@@ -21,7 +22,8 @@ private val DarkColorScheme = darkColorScheme(
     secondary = DarkSecondary,
     onSecondary = DarkOnSecondary,
     tertiary = DarkTertiary,
-    surfaceVariant = DarkSurfaceVariant
+    surfaceVariant = DarkSurfaceVariant,
+    surfaceTint = DarkSurfaceTint
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -39,14 +41,21 @@ private val LightColorScheme = lightColorScheme(
     secondary = LightSecondary,
     onSecondary = LightOnSecondary,
     tertiary = LightTertiary,
-    surfaceVariant = LightSurfaceVariant
+    surfaceVariant = LightSurfaceVariant,
+    surfaceTint = LightSurfaceTint
 )
 
 @Composable
 fun ProxyAppTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    themeMode: ThemeMode,
     content: @Composable () -> Unit
 ) {
+    val darkTheme = when (themeMode) {
+        ThemeMode.LIGHT -> false
+        ThemeMode.DARK -> true
+        ThemeMode.SYSTEM -> isSystemInDarkTheme()
+    }
+
     val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
 
     MaterialTheme(
