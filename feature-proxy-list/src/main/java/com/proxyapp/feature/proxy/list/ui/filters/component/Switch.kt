@@ -28,7 +28,7 @@ fun Switch(
 ) {
     Box(
         modifier = Modifier
-            .shadow(8.dp, RoundedCornerShape(16.dp), spotColor = MaterialTheme.colorScheme.onSurface)
+            .shadow(8.dp, RoundedCornerShape(16.dp), spotColor = MaterialTheme.colorScheme.surfaceTint)
             .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(16.dp))
             .padding(16.dp)
     ) {

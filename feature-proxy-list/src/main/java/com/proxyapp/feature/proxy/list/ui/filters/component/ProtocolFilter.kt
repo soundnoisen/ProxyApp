@@ -37,7 +37,7 @@ fun ProtocolFilter(
 
                 Box(
                     modifier = Modifier
-                        .shadow(8.dp, CircleShape, spotColor = MaterialTheme.colorScheme.onSurface)
+                        .shadow(8.dp, CircleShape, spotColor = MaterialTheme.colorScheme.surfaceTint)
                         .background(backgroundColor, CircleShape)
                         .clickable{ onClick(protocol) }
                         .padding(vertical = 8.dp, horizontal = 12.dp)

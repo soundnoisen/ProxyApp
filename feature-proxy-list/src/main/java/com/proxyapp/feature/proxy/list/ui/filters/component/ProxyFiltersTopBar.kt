@@ -37,7 +37,7 @@ fun ProxyFiltersTopBar(
             onClick = onBackClick,
             modifier = Modifier
                 .align(Alignment.CenterStart)
-                .shadow(4.dp, shape = CircleShape, spotColor = MaterialTheme.colorScheme.onSurface, ambientColor = MaterialTheme.colorScheme.onSurface)
+                .shadow(4.dp, shape = CircleShape, spotColor = MaterialTheme.colorScheme.surfaceTint, ambientColor = MaterialTheme.colorScheme.surfaceTint)
             ,
             colors = IconButtonDefaults.iconButtonColors(containerColor = MaterialTheme.colorScheme.surface)
         ) {

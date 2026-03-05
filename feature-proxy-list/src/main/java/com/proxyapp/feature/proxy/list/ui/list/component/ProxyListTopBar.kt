@@ -34,7 +34,7 @@ fun ProxyListTopBar(
             onClick = onClick,
             modifier = Modifier
                 .align(Alignment.CenterEnd)
-                .shadow(4.dp, shape = CircleShape, spotColor = MaterialTheme.colorScheme.onSurface, ambientColor = MaterialTheme.colorScheme.onSurface)
+                .shadow(4.dp, shape = CircleShape, spotColor = MaterialTheme.colorScheme.surfaceTint, ambientColor = MaterialTheme.colorScheme.surfaceTint)
             ,
             colors = IconButtonDefaults.iconButtonColors(containerColor = MaterialTheme.colorScheme.surface)
         ) {

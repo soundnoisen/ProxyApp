@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.core.net.toUri
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.proxyapp.core.ui.component.SnackBar
+import com.proxyapp.domain.model.ThemeMode
 import com.proxyapp.feature.proxy.list.R
 import com.proxyapp.feature.proxy.list.ui.list.component.ProxyListTopBar
 import com.proxyapp.feature.proxy.list.ui.list.component.ProxyListWithBottomActions
@@ -38,6 +39,7 @@ import kotlinx.coroutines.flow.collectLatest
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProxyListScreen(
+    currentTheme: ThemeMode,
     viewModel: ProxyListViewModel = hiltViewModel(),
     onNavigateToMain: () -> Unit,
     onNavigateToFilters: () -> Unit
@@ -111,6 +113,7 @@ fun ProxyListScreen(
                     onSave = { viewModel.onIntent(ProxyListIntent.SaveProxy) },
                     onRemove = { viewModel.onIntent(ProxyListIntent.RemoveProxy) },
                     onConnectToTelegram = { viewModel.onIntent(ProxyListIntent.ConnectToTelegramProxy) },
+                    currentTheme = currentTheme
                     )
             }
         }

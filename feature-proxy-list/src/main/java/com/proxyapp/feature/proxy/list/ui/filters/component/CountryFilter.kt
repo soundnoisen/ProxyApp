@@ -35,7 +35,7 @@ fun CountryFilter(
         LabelFilter(text = stringResource(R.string.label_countries),)
         Box(
             modifier = Modifier
-                .shadow(8.dp, RoundedCornerShape(16.dp), spotColor = MaterialTheme.colorScheme.onSurface)
+                .shadow(8.dp, RoundedCornerShape(16.dp), spotColor = MaterialTheme.colorScheme.surfaceTint)
                 .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(16.dp))
                 .padding(vertical = 16.dp)
                 .padding(start = 16.dp)

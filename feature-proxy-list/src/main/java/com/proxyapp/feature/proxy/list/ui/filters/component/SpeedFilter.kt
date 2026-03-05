@@ -51,7 +51,7 @@ fun SpeedFilter(
                 .shadow(
                     8.dp,
                     RoundedCornerShape(16.dp),
-                    spotColor = MaterialTheme.colorScheme.onSurface
+                    spotColor = MaterialTheme.colorScheme.surfaceTint
                 )
                 .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(16.dp))
         ) {

@@ -17,11 +17,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.proxyapp.core.ui.component.CountryTag
-import com.proxyapp.core.ui.component.ProtocolTag
 import com.proxyapp.core.ui.component.ProxyIpWithIndicator
-import com.proxyapp.core.ui.component.SpeedTag
+import com.proxyapp.core.ui.component.ProxyTags
 import com.proxyapp.domain.model.Proxy
+import com.proxyapp.domain.model.ThemeMode
 import com.proxyapp.feature.proxy.list.R
 
 @Composable
@@ -29,6 +28,7 @@ fun ProxyCard(
     proxy: Proxy,
     onClick: () -> Unit,
     onMenuClick: () -> Unit,
+    currentTheme: ThemeMode
 ) {
     val colorIndicator = if (proxy.isValid) { MaterialTheme.colorScheme.tertiary } else { MaterialTheme.colorScheme.error }
 
@@ -60,11 +60,12 @@ fun ProxyCard(
                     color = colorIndicator
                 )
                 proxy.lastChecked?.let { ProxyDateChecked(date = it) }
-                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    ProtocolTag(proxy.protocol.name)
-                    CountryTag(proxy.country.orEmpty())
-                    if (proxy.speed > 0f) SpeedTag(proxy.speed)
-                }
+                ProxyTags(
+                    currentTheme = currentTheme,
+                    protocol = proxy.protocol.name.uppercase(),
+                    country = proxy.country.orEmpty(),
+                    speed = proxy.speed,
+                )
             }
             IconButton(onClick = onMenuClick) {
                 Icon(

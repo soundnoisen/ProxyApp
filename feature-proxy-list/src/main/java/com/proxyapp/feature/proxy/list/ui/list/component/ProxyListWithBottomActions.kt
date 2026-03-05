@@ -8,6 +8,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import com.proxyapp.domain.model.Proxy
 import com.proxyapp.domain.model.ProxyProtocol
+import com.proxyapp.domain.model.ThemeMode
 
 @Composable
 fun ProxyListWithBottomActions(
@@ -24,7 +25,8 @@ fun ProxyListWithBottomActions(
     onConnectToTelegram: () -> Unit,
     onSave: () -> Unit,
     onRemove: () -> Unit,
-    onLoadNextPage: () -> Unit
+    onLoadNextPage: () -> Unit,
+    currentTheme: ThemeMode
 ) {
     if (proxies.isEmpty() && !isLoading) {
         EmptyProxyPlaceholder()
@@ -36,7 +38,8 @@ fun ProxyListWithBottomActions(
                 ProxyCard(
                     proxy = proxy,
                     onClick = { onCardClick(proxy) },
-                    onMenuClick = { onMenuOpen(proxy) }
+                    onMenuClick = { onMenuOpen(proxy) },
+                    currentTheme = currentTheme
                 )
             }
             item {
