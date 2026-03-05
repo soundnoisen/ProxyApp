@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings">Settings</string>
+
+    <string name="theme">Theme</string>
+    <string name="label_light_theme">Light</string>
+    <string name="label_dark_theme">Dark</string>
+    <string name="label_system_theme">System</string>
+
+    <string name="about">About</string>
+    <string name="label_version">Version</string>
+    <string name="label_protocols">Protocols</string>
+    <string name="label_source">Source code</string>
+</resources>
