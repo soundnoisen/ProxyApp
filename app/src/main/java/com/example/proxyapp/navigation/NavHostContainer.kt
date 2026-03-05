@@ -26,10 +26,13 @@ fun NavHostContainer(
         modifier = Modifier.padding(paddingValues = padding),
         builder = {
             composable(BottomNavRoutes.SETUP) {
-                ProxySetupScreen()
+                ProxySetupScreen(
+                    currentTheme = currentTheme
+                )
             }
             composable(BottomNavRoutes.LIST) {
                 ProxyListScreen(
+                    currentTheme = currentTheme,
                     onNavigateToFilters = { navController.navigate(NavRoutes.FILTERS) },
                     onNavigateToMain = { navController.navigate(BottomNavRoutes.SETUP) }
                 )
