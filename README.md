@@ -75,3 +75,6 @@ ProxyApp может получать прокси из нескольких ис
 
 ## Демонстрация интерфейса
 <img width="1584" height="717" alt="Frame 1618872924" src="https://github.com/user-attachments/assets/489d52da-61a4-4aeb-af05-e9bda2f64c9f" />
+
+## Демонстрация работы приложения
+[![Watch the video](https://img.youtube.com/vi/Iodz1ema_5A/0.jpg)](https://www.youtube.com/shorts/Iodz1ema_5A)
